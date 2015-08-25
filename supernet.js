@@ -22,6 +22,42 @@
  * @apiDefine volume   
  * @apiParam {Number} volume Bid/Ask Volume.
  */
+ 
+ /** 
+ * @api {BitcoinDarkd SuperNET} '{"plugin":"InstantDEX","method":"allorderbooks"}' Allorderbooks
+ * @apiVersion 0.1.0
+ * @apiName getInstantDEXmethodAllorderbooks
+ * @apiGroup InstantDEX
+ *
+ * @apiParam {String} allorderbooks Get list of all active orderbooks.
+ *
+ *
+ * @apiParamExample {btcd} Call-Example:
+ * ./BitcoinDarkd SuperNET '{"plugin":"InstantDEX","method":"allorderbooks"}'
+ *
+ * @apiSuccessExample {json} Success-Response-Example:
+ *{
+ * "orderbooks": [
+ *   {
+ *     "name": "Jay/NXT",
+ *     "base": "Jay",
+ *     "baseid": "8688289798928624137",
+ *     "rel": "NXT",
+ *     "relid": "5527630",
+ *     "exchange": "InstantDEX"
+ *   },
+ *   {
+ *     "name": "SuperNET/NXT",
+ *     "base": "SuperNET",
+ *     "baseid": "12071612744977229797",
+ *     "rel": "NXT",
+ *     "relid": "5527630",
+ *     "exchange": "InstantDEX"
+ *   }
+ * ]
+ *}
+ */
+
 
 
 /** 
