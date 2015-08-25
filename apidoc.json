@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "SuperNET BitcoinDark API Documentation",
   "title": "SuperNET API Documentation",
-  "template": {
+  "template": 
+	{
   	"withCompare": true,
   	"withGenerator": true
-  }
+  	}
 }
