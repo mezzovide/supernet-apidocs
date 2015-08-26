@@ -38,7 +38,7 @@
 /** 
  * @api {btcd} '{"plugin":"InstantDEX","method":"allorderbooks"}' Allorderbooks
  * @apiVersion 0.1.0
- * @apiName getInstantDEXmethodAllorderbooks
+ * @apiName InstantDEXmethodAllOrderBooks
  * @apiGroup InstantDEX
  *
  * @apiParam {String} allorderbooks Get list of all active orderbooks.
@@ -73,7 +73,7 @@
 /**
  * @api {btcd} '{"plugin":"InstantDEX","method":"balance","exchange":"{exchange}"}' Balance
  * @apiVersion 0.1.0
- * @apiName GetInstantDEXMethodBalance
+ * @apiName InstantDEXMethodBalance
  * @apiGroup InstantDEX
  * @apiUse ext_exchange
  *
@@ -91,7 +91,7 @@
 /**
  * @api {btcd} '{"plugin":"InstantDEX","method":"cancelorder","orderid":"{orderid}"}' Cancelorder
  * @apiVersion 0.1.0
- * @apiName getInstantDEXmethodCancelOrder
+ * @apiName InstantDEXmethodCancelOrder
  * @apiGroup InstantDEX
  * @apiUse orderid
  *
@@ -110,7 +110,7 @@
 /** 
  * @api {btcd} '{"plugin":"InstantDEX","method":"openorders","exchange":"{exchange}"}' Openorders
  * @apiVersion 0.1.0
- * @apiName GetInstantDEXMethodOpenOrders
+ * @apiName InstantDEXMethodOpenOrders
  * @apiGroup InstantDEX
  * @apiUse exchange 
  *
@@ -149,7 +149,7 @@
 /** 
  * @api {btcd} '{"plugin":"InstantDEX","method":"openorders","baseid":"{baseid}","relid":"{relid}","exchange":"{exchange}"}' Orderbook
  * @apiVersion 0.1.0
- * @apiName GetInstantDEXMethodOrderbook
+ * @apiName InstantDEXMethodOrderBook
  * @apiGroup InstantDEX
  * @apiUse baseid
  * @apiUse relid
@@ -230,7 +230,7 @@
 /**
  * @api {btcd} '{"plugin":"InstantDEX","method":"placeask","baseid":"{baseid}","relid":"{relid}","price":"{price}","volume":"{volume}","exchange":"{exchange}"}' Placeask
  * @apiVersion 0.1.0
- * @apiName GetInstantDEXMethodPlaceAsk
+ * @apiName InstantDEXMethodPlaceAsk
  * @apiGroup InstantDEX
  * @apiUse price
  * @apiUse volume
@@ -273,7 +273,7 @@
 /**
  * @api {btcd} '{"plugin":"InstantDEX","method":"placebid","baseid":"{baseid}","relid":"{relid}","price":"{price}","volume":"{volume}","exchange":"{exchange}"}' Placebid
  * @apiVersion 0.1.0
- * @apiName GetInstantDEXMethodPlaceBid
+ * @apiName InstantDEXMethodPlaceBid
  * @apiGroup InstantDEX
  * @apiUse price
  * @apiUse volume
@@ -311,7 +311,53 @@
  * "method": "busdata",
  * "submethod": "bid"
  *}
+ */
+
+/**
+ * @api {btcd} '{"plugin":"InstantDEX","method":"tradesequence","dotrade":{dotrade},"price":{price},"volume":{volume},"trades":[{"group":{group},"exchange":"{exchange}","asset":"{asset}","offerNXT":"{offernxt}","baseid":"{baseid}","relid":"{relid}","trade":"{trade}","recvbase":"{recvbase}","sendrel":"{sendrel}","orderprice":{orderprice},"ordervolume":{ordervol},"orderid":"{orderid}","quoteid":"{quoteid}"}]}' Tradesequence
+ * @apiVersion 0.1.0
+ * @apiName InstantDEXMethodTradeSequence
+ * @apiGroup InstantDEX
+ * @apiUse price
+ * @apiUse volume
+ * @apiUse baseid
+ * @apiUse relid
+ * @apiUse exchange
  *
+ * @apiParam {String} tradesequence Step-by-step InstantDEX trading process logic.
  *
+ * @apiParamExample {btcd} RPC-Call-Example:
+ * ./BitcoinDarkd SuperNET '{"plugin":"InstantDEX","method":"tradesequence","dotrade":1,"price":1,"volume":1,"trades":[{"group":0,"exchange":"InstantDEX","asset":"8688289798928624137","offerNXT":"11471677413693100042","baseid":"8688289798928624137","relid":"5527630","trade":"swap","recvbase":"10000","sendrel":"100000000","orderprice":1,"ordervolume":1,"orderid":"17781610373390691008","quoteid":"17781610373390691008"}]}'
+ * 
+ * @apiSuccessExample {json} Response-Example:
+ *{
+ * "traderesults": [
+ *   {
+ *     "orderid": "10627900755374734772",
+ *     "quoteid": "17781610373390691008",
+ *     "offerNXT": "6746683124695165774",
+ *     "plugin": "relay",
+ *     "destplugin": "InstantDEX",
+ *     "method": "busdata",
+ *     "submethod": "swap",
+ *     "exchange": "InstantDEX",
+ *     "base": "Jay",
+ *     "rel": "NXT",
+ *     "baseid": "8688289798928624137",
+ *     "relid": "5527630",
+ *     "baseqty": "10000",
+ *     "relqty": "-100000000",
+ *     "price": 1,
+ *     "volume": 1,
+ *     "F": "506086",
+ *     "T": "cc95caae0ff5ecd89b3e0a6e28a015ae3e89d35939e49a8da527b5d01aba7a6a",
+ *     "FH": "39500ef67070f015e14ec8fd251569bbe90e22e6467e629b6836851672cd35ef",
+ *     "U": "0010273e4b037800b2737a50100da1ba43aa87ba3da42de66fd0a84d5d26d77312e882961cf1ea2d0a900c05d495339f00e1f5050000000000e1f50500000000cc95caae0ff5ecd89b3e0a6e28a015ae3e89d35939e49a8da527b5d01aba7a6aZ01000000dab807002b82975378eefa1b01200000806234376433373930366465333764393363303661356137303663663863346636",
+ *     "S": "f516e76ec24569548c4e55fb60f6991265b3ba14e9ef3aa90a25fba8d42c396b",
+ *     "a": "8688289798928624137",
+ *     "q": "10000"
+ *   }
+ * ]
+ *}
  */
  
