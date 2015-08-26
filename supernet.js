@@ -5,6 +5,11 @@
  */
 
 /**
+ * @apiDefine orderid
+ * @apiParam {String} orderid Order ID.
+ */
+
+/**
  * @apiDefine relid
  * @apiParam {String} relid Rel Asset ID.
  */
@@ -81,6 +86,25 @@
  *
  * @apiSuccessExample {json} Response-Example:
  * to be added
+ */
+
+/**
+ * @api {btcd} '{"plugin":"InstantDEX","method":"cancelorder","orderid":"{orderid}"}' Cancelorder
+ * @apiVersion 0.1.0
+ * @apiName getInstantDEXmethodCancelOrder
+ * @apiGroup InstantDEX
+ * @apiUse orderid
+ *
+ * @apiParam {String} cancelorder Cancel active order. orderid can be found in the response field from orderbook or openorders call.
+ *
+ *
+ * @apiParamExample {btcd} RPC-Call-Example:
+ * ./BitcoinDarkd SuperNET '{"plugin":"InstantDEX","method":"cancelorder","orderid":"{1687151384261107915}'
+ *
+ * @apiSuccessExample {json} Response-Example:
+ *{
+ * "ordercanceled": "1687151384261107915"
+ *}
  */
 
 /** 
