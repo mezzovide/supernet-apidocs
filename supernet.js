@@ -1,7 +1,22 @@
 
 /**
  * @apiDefine baseid
- * @apiParam {String} baseid Base Asset ID.
+ * @apiParam {String} baseid Base asset ID.
+ */
+
+/**
+ * @apiDefine base
+ * @apiParam {String} base Base asset name.
+ */
+
+/**
+ * @apiDefine rel
+ * @apiParam {String} rel Rel asset name.
+ */
+
+/**
+ * @apiDefine name
+ * @apiParam {String} name Pair's name.
  */
 
 /**
@@ -11,7 +26,7 @@
 
 /**
  * @apiDefine relid
- * @apiParam {String} relid Rel Asset ID.
+ * @apiParam {String} relid Rel asset ID.
  */
 
 /**
@@ -24,7 +39,6 @@
  * @apiParam {String="bitfinex","btc38","bitstamp","btce","poloniex","bittrex","huobi","coinbase","okcoin","bityes","lakebtc","exmo","quadriga"} exchange Supported external exchanges
  */
 
-
 /**
  * @apiDefine price
  * @apiParam {Number} price Bid/Ask Price.
@@ -33,6 +47,70 @@
 /**
  * @apiDefine volume   
  * @apiParam {Number} volume Bid/Ask Volume.
+ */
+/**
+ * @apiDefine dotrade
+ * @apiParam {Boolean} dotrade Switch between real trading or dry-run.
+ */
+
+/**
+ * @apiDefine group
+ * @apiParam {Number} group Number of basket group.
+ */
+
+/**
+ * @apiDefine asset  
+ * @apiParam {String} asset Numerical asset ID.
+ */
+
+/**
+ * @apiDefine offernxt
+ * @apiParam {String} offerNXT Numerical NXT sender ID.
+ */
+
+/**
+ * @apiDefine trade
+ * @apiParam {String="swap","buy","sell"} trade Trade methods.
+ */
+
+/**
+ * @apiDefine recvbase
+ * @apiParam {String} recvbase The amount of base/baseid to be received.
+ */
+
+/**
+ * @apiDefine recvrel
+ * @apiParam {String} recvrel The amount of rel/relid to be received.
+ */
+
+/**
+ * @apiDefine sendbase
+ * @apiParam {String} sendbase The amount of base/baseid to be sent. 
+ */
+
+/**
+ * @apiDefine sendrel
+ * @apiParam {String} sendrel The amount of rel/relid to be sent.
+ */
+
+/**
+ * @apiDefine orderprice
+ * @apiParam {Number} orderprice The price to be traded per "trades" sequence.
+ */
+
+/**
+ * @apiDefine ordervolume 
+ * @apiParam {Number} ordervolume The amount of volume to be traded per "trades" sequence.
+ */
+
+/**
+ * @apiDefine orderid
+ * @apiParam {String} orderid orderid.
+ */
+
+/**
+ * @apiDefine quoteid
+ * @apiParam {String} quoteid quoteid.
  */
  
 /** 
@@ -105,6 +183,28 @@
  *{
  * "ordercanceled": "1687151384261107915"
  *}
+ */
+
+/**
+ * @api {btcd} '{"plugin":"InstantDEX","method":"makebasket","name":"{name}","base":"{base}","rel":"{rel}","basket":[{"exchange":"{exchange}"}' Makebasket
+ * @apiVersion 0.1.0
+ * @apiName InstantDEXMethodMakeBasket
+ * @apiGroup InstantDEX
+ * @apiUse name
+ * @apiUse base
+ * @apiUse rel
+ * @apiUse exchange
+ * 
+ * 
+ * @apiParam {String} makebasket Make basket pair, can be done in SuperNET.conf too.
+ *
+ * 
+ * @apiParamExample {btcd} RPC-Call-Example:
+ * ./BitcoinDarkd SuperNET '{"plugin":"InstantDEX","method":"makebasket","name":"NXT/BTC","base":"NXT","rel":"BTC","basket":[{"exchange":"btc38"},{"exchange":"nxtae","baseid":"17554243582654188572","relid":"NXT","wt":-1}]}'
+ * 
+ * @apiSuccessExample {json} Response-Example:
+ * {"result":"basket made"}
+ *
  */
 
 /** 
@@ -314,15 +414,26 @@
  */
 
 /**
- * @api {btcd} '{"plugin":"InstantDEX","method":"tradesequence","dotrade":{dotrade},"price":{price},"volume":{volume},"trades":[{"group":{group},"exchange":"{exchange}","asset":"{asset}","offerNXT":"{offernxt}","baseid":"{baseid}","relid":"{relid}","trade":"{trade}","recvbase":"{recvbase}","sendrel":"{sendrel}","orderprice":{orderprice},"ordervolume":{ordervol},"orderid":"{orderid}","quoteid":"{quoteid}"}]}' Tradesequence
+ * @api {btcd} '{"plugin":"InstantDEX","method":"tradesequence","dotrade":{dotrade},"price":{price},"volume":{volume},"trades":[{"group":{group},"exchange":"{exchange}","asset":"{asset}","offerNXT":"{offernxt}","baseid":"{baseid}","relid":"{relid}","trade":"{trade}","recvbase":"{recvbase}","sendrel":"{sendrel}","orderprice":{orderprice},"ordervolume":{ordervolume},"orderid":"{orderid}","quoteid":"{quoteid}"}]}' Tradesequence
  * @apiVersion 0.1.0
  * @apiName InstantDEXMethodTradeSequence
  * @apiGroup InstantDEX
+ * @apiUse dotrade
  * @apiUse price
  * @apiUse volume
+ * @apiUse group
+ * @apiUse exchange
+ * @apiUse asset
+ * @apiUse offernxt
  * @apiUse baseid
  * @apiUse relid
- * @apiUse exchange
+ * @apiUse trade
+ * @apiUse recvbase
+ * @apiUse sendrel
+ * @apiUse orderprice
+ * @apiUse ordervolume
+ * @apiUse orderid
+ * @apiUse quoteid
  *
  * @apiParam {String} tradesequence Step-by-step InstantDEX trading process logic.
  *
