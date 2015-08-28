@@ -116,7 +116,7 @@
 /** 
  * @api {btcd} '{"plugin":"InstantDEX","method":"allorderbooks"}' Allorderbooks
  * @apiVersion 0.1.0
- * @apiName InstantDEXmethodAllOrderBooks
+ * @apiName InstantDEXMethodAllOrderBooks
  * @apiGroup InstantDEX
  *
  * @apiParam {String} allorderbooks Get list of all active orderbooks.
@@ -169,7 +169,7 @@
 /**
  * @api {btcd} '{"plugin":"InstantDEX","method":"cancelorder","orderid":"{orderid}"}' Cancelorder
  * @apiVersion 0.1.0
- * @apiName InstantDEXmethodCancelOrder
+ * @apiName InstantDEXMethodCancelOrder
  * @apiGroup InstantDEX
  * @apiUse orderid
  *
@@ -183,6 +183,48 @@
  *{
  * "ordercanceled": "1687151384261107915"
  *}
+ */
+
+/**
+ * @api {btcd} '{"plugin":"InstantDEX","method":"disable","baseid":"{baseid}","relid":"{relid}","exchange":"{exchange}"}' Disable
+ * @apiVersion 0.1.0
+ * @apiName InstantDEXMethodDisable
+ * @apiGroup InstantDEX
+ * @apiUse baseid
+ * @apiUse relid
+ * @apiuse exchange
+ * 
+ * @apiParam {String} disable Disable the selected pair from being polled.
+ *     
+ *     
+ * @apiParamExample {btcd} RPC-Call-Example:
+ * ./BitcoinDarkd SuperNET '{"plugin":"InstantDEX","method":"disable","baseid":"8688289798928624137","relid":"5527630","exchange":"nxtae"}'
+ * #Disable Jay/NXT polling from NXTAE.
+ *    
+ * @apiSuccessExample {json} Response-Example:
+ * {"result":"success"}
+ *
+ */
+
+/**
+ * @api {btcd} '{"plugin":"InstantDEX","method":"enable","baseid":"{baseid}","relid":"{relid}","exchange":"{exchange}"}' Enable
+ * @apiVersion 0.1.0
+ * @apiName InstantDEXMethodEnable
+ * @apiGroup InstantDEX
+ * @apiUse baseid 
+ * @apiUse relid 
+ * @apiuse exchange
+ * 
+ * @apiParam {String} enable Enable the selected pair to be polled.                                                      
+ * 
+ * 
+ * @apiParamExample {btcd} RPC-Call-Example:
+ * ./BitcoinDarkd SuperNET '{"plugin":"InstantDEX","method":"enable","baseid":"8688289798928624137","relid":"5527630","exchange":"nxtae"}'
+ * #Enable Jay/NXT polling from NXTAE. 
+ *
+ * @apiSuccessExample {json} Response-Example:
+ * {"result":"success"}
+ *
  */
 
 /**
